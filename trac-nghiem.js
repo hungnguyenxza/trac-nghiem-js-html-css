@@ -45,15 +45,15 @@ let cauHoi = [{
 {
     'id': 3,
     'question': `<body onload ="hello()">
-                  <script>
-                    function hello()
-                    {
-                    window.open("http://timoday.edu.vn","Chao ban den voi timoday.edu.vn");
-                    }
-                  </script>
+                    <script>
+                        function hello()
+                        {
+                            window.open("http://mindx.edu.vn","Chao ban den voi MindX.edu.vn");
+                        }
+                    </script>
                 </body>`,
     'answer': [{
-        'title': 'Hiện một trang timoday.edu.vn duy nhất',
+        'title': 'Hiện một trang mindx.edu.vn duy nhất',
         'isRight': false,
     },
     {
@@ -61,7 +61,7 @@ let cauHoi = [{
         'isRight': false,
     },
     {
-        'title': 'Khi chạy thì mở thêm một cửa sổ mới gọi trang timoday.edu.vn',
+        'title': 'Khi chạy thì mở thêm một cửa sổ mới gọi trang mindx.edu.vn',
         'isRight': true,
     },
     {
@@ -106,6 +106,112 @@ let cauHoi = [{
     },
     {
         'title': 'client.navName',
+        'isRight': false,
+    },
+    ],
+    'isMultiAnswer': false,
+},
+{
+    'id': 6,
+    'question': `JavaScript là ngôn ngữ xử lý ở đâu?`,
+    'answer': [{
+        'title': 'Cả server và client',
+        'isRight': false,
+    },
+    {
+        'title': 'Không ở dạng nào',
+        'isRight': false,
+    },
+    {
+        'title': 'Client',
+        'isRight': true,
+    },
+    {
+        'title': 'Server',
+        'isRight': false,
+    },
+    ],
+    'isMultiAnswer': false,
+},
+{
+    'id': 7,
+    'question': `Nơi bạn có thể đặt code JavaScript trong trang web?`,
+    'answer': [{
+        'title': 'Bạn có thể đặt trong phần <head> hoặc <body>',
+        'isRight': true,
+    },
+    {
+        'title': 'Chỉ trong phần <head>',
+        'isRight': false,
+    },
+    {
+        'title': 'Chỉ trong phần <body>',
+        'isRight': false,
+    },
+    ],
+    'isMultiAnswer': false,
+},
+{
+    'id': 8,
+    'question': `JavaScript là ngôn ngữ dịch mã nguồn theo kiểu nào?`,
+    'answer': [{
+        'title': 'Cả hai dạng biên dịch và thông dịch',
+        'isRight': true,
+    },
+    {
+        'title': 'Biên dịch',
+        'isRight': false,
+    },
+    {
+        'title': 'Thông dịch',
+        'isRight': false,
+    },
+    {
+        'title': 'Không có dạng nào ở trên',
+        'isRight': false,
+    },
+    ],
+    'isMultiAnswer': false,
+},
+{
+    'id': 9,
+    'question': `Cách khai báo mảng nào trong JavaScript là đúng?`,
+    'answer': [{
+        'title': 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")',
+        'isRight': false,
+    },
+    {
+        'title': 'var colors = "red", "green", "blue"',
+        'isRight': false,
+    },
+    {
+        'title': 'var colors = ["red", "green", "blue"]',
+        'isRight': true,
+    },
+    {
+        'title': 'var colors = (1:"red", 2:"green", 3:"blue")',
+        'isRight': false,
+    },
+    ],
+    'isMultiAnswer': false,
+},
+{
+    'id': 10,
+    'question': `Câu lệnh break kết hợp với vòng lặp để làm gì?`,
+    'answer': [{
+        'title': 'Ngưng vòng lặp nếu gặp lệnh này',
+        'isRight': true,
+    },
+    {
+        'title': 'Không thể kết hợp được',
+        'isRight': false,
+    },
+    {
+        'title': 'Không có ý nghĩa gì trong vòng lặp',
+        'isRight': false,
+    },
+    {
+        'title': 'Nhảy đến một tập lệnh khác',
         'isRight': false,
     },
     ],
@@ -178,7 +284,7 @@ function preParaForNextQuestion() {
 function displayQuestion(cQuestion, indexQuestion) {
     document.getElementById("indexQuestion").innerHTML = indexQuestion;
     document.getElementById("totalQuestion").innerHTML = totalQuestion;
-    document.getElementById("contentQuestion").innerHTML = cQuestion.question;
+    document.getElementById("contentQuestion").innerHTML = standardContentQuestion(cQuestion.question);
     document.getElementById("answerQuestion").innerHTML = "";
     let tblAnswert = '';
     for (let i = 0; i < cQuestion.answer.length; i++) {
@@ -191,6 +297,11 @@ function displayQuestion(cQuestion, indexQuestion) {
                     </li>`;
     }
     document.getElementById("answerQuestion").innerHTML = tblAnswert;
+}
+
+function standardContentQuestion(content){
+    return content.replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
 }
 
 function hideResult() {
@@ -237,6 +348,11 @@ function newGame() {
 }
 
 function suffleCauHoiF() {
-    let result = JSON.parse(JSON.stringify(cauHoi));
+    let copy = JSON.parse(JSON.stringify(cauHoi));
+    let result = [];
+    while(copy.length > 0){
+        let i = Math.floor(Math.random() * copy.length);
+        result.push(copy.splice(i, 1)[0]);
+    }
     return result;
 }
