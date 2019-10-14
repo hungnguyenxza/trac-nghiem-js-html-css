@@ -1,0 +1,120 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
+#container {
+    width: 80%;
+    margin: auto;
+}
+
+.content-question-answer {
+    padding-left: 2em;
+}
+
+#answerQuestion {
+    border: 1px solid #C3D1A3;
+    background: #F8FAF5;
+}
+
+ol li:hover {
+    background: #9aea22;
+}
+
+#rightAnswer {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert{
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+.alert-success{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+#wrongAnswer {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+#needAnswer {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+#contentQuestion{
+    font-size: larger;
+    margin: 10px 0;
+}
+
+#userResult{
+    font-size: large;
+    margin: 10px 0;
+}
+
+.btn-success{
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn-success:hover{
+    color: #fff;
+    background-color: #1e7e34;
+    border-color: #1c7430;
+}
+.btn-success:hover, .btn-primary:hover{
+    cursor: pointer;
+}
+.btn-primary{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+.btn{
+    border: 1px solid transparent;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    #container {
+        width: 100%;
+        margin: auto;
+    }
+    .content-question-answer {
+        padding-left: 0em;
+    }
+}
