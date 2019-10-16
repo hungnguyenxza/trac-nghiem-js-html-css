@@ -15,10 +15,10 @@ let cauHoi = [{
     },
     {
         'title': 'if (i <> 5)',
-        'isRight': false,
+        'isRight': true,
     },
     ],
-    'isMultiAnswer': false,
+    'isMultiAnswer': true,
 },
 {
     'id': 2,
@@ -219,6 +219,20 @@ let cauHoi = [{
 },
 ];
 
+let rightAnswerMessages = [
+    `Yeahhh! Chính xác <i class="far fa-2x fa-laugh-squint"></i>`,
+    `Wow, ghê đấy <i class="far fa-2x fa-grin-stars"></i>`,
+    `Bạn đã trả lời đúng! <i class="far fa-2x fa-kiss"></i>`,
+    `Ngon, tiếp nào... <i class="far fa-2x fa-grin-alt"></i>`,
+]
+
+let wrongAnswerMessages = [
+    `Hả? Sai rồi. <i class="far fa-2x fa-flushed"></i>`,
+    `Sai rồi nha. Cố lên <i class="far fa-2x fa-grin-beam-sweat"></i>`,
+    `Bạn đã trả lời sai! <i class="far fa-2x fa-meh"></i>`,
+    `Có gì đó không đúng? <i class="far fa-2x fa-meh-rolling-eyes"></i>`,
+]
+
 let suffleCauHoi;
 
 let userResult = 0;
@@ -287,14 +301,26 @@ function displayQuestion(cQuestion, indexQuestion) {
     document.getElementById("contentQuestion").innerHTML = standardContentQuestion(cQuestion.question);
     document.getElementById("answerQuestion").innerHTML = "";
     let tblAnswert = '';
-    for (let i = 0; i < cQuestion.answer.length; i++) {
-        const answer = cQuestion.answer[i];
-        tblAnswert += `<li>
-                        <input type="radio" value="${answer.isRight}" id="answer_${indexQuestion}_${i + 1}" name="answer_${cQuestion.id}"/>
-                        <label for="answer_${indexQuestion}_${i + 1}">
-                        ${answer.title}
-                        </label>
-                    </li>`;
+    if(cQuestion.isMultiAnswer){
+        for (let i = 0; i < cQuestion.answer.length; i++) {
+            const answer = cQuestion.answer[i];
+            tblAnswert += `<li>
+                            <input class="hidden" type="checkbox" value="${answer.isRight}" id="answer_${indexQuestion}_${i + 1}" name="answer_${cQuestion.id}"/>
+                            <label class="w-100p m-0 py-1" for="answer_${indexQuestion}_${i + 1}">
+                                ${standardContentQuestion(answer.title)}
+                            </label>
+                        </li>`;
+        }
+    }else{
+        for (let i = 0; i < cQuestion.answer.length; i++) {
+            const answer = cQuestion.answer[i];
+            tblAnswert += `<li>
+                            <input class="hidden" type="radio" value="${answer.isRight}" id="answer_${indexQuestion}_${i + 1}" name="answer_${cQuestion.id}"/>
+                            <label class="w-100p m-0 py-1" for="answer_${indexQuestion}_${i + 1}">
+                                ${standardContentQuestion(answer.title)}
+                            </label>
+                        </li>`;
+        }
     }
     document.getElementById("answerQuestion").innerHTML = tblAnswert;
 }
@@ -302,6 +328,11 @@ function displayQuestion(cQuestion, indexQuestion) {
 function standardContentQuestion(content){
     return content.replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;');
+}
+
+function onToggleSelected(e){
+    console.dir(e.target.parentElement);
+    e.target.parentElement.classList.toggle('selected');
 }
 
 function hideResult() {
@@ -318,12 +349,21 @@ function newQuestion() {
 function rightAnswer() {
     hideResult();
     document.getElementById("rightAnswer").style.display = 'block';
+    document.getElementById("rightAnswer").innerHTML = getRandomMessage(rightAnswerMessages);
     userResult++;
 }
+
+function getRandomMessage(listMessages){
+    let ran = Math.floor(Math.random() * listMessages.length);
+    return listMessages[ran];
+}
+
+
 
 function wrongAnswer() {
     hideResult();
     document.getElementById("wrongAnswer").style.display = 'block';
+    document.getElementById("wrongAnswer").innerHTML = getRandomMessage(wrongAnswerMessages);
 }
 
 function needAnswerQuestion() {
@@ -343,6 +383,7 @@ function newGame() {
     document.getElementById("result").style.display = 'none';
     suffleCauHoi = suffleCauHoiF();
     indexQuestion = 0;
+    userResult = 0;
     totalQuestion = suffleCauHoi.length;
     nextQuestion();
 }

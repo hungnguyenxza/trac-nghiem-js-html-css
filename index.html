@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Trắc nghiệm Javascript</title>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,26 +26,29 @@
         <div class="content-question-answer">
           <div id="contentQuestion"></div>
           <div>
-            <ol id="answerQuestion">
+            <ol id="answerQuestion" type="A">
 
             </ol>
           </div>
         </div>
       </div>
-      <div id="rightAnswer" class="resultQuestion">
-        <div>Trả lời đúng</div>
-      </div>
-      <div id="wrongAnswer" class="resultQuestion">
-        <div>Trả lời không đúng</div>
-      </div>
-      <div id="needAnswer">
-        <div>Chưa trả lời câu hỏi</div>
-      </div>
-      <div id="submitAnswer">
-        <button type="button" id="btnSubmitAnswer" class="btn btn-success" onclick="submitAnswer()">Kiểm tra</button>
-        <button type="button" id="btnNextQuestion" class="btn btn-primary" onclick="nextQuestion()">Kế tiếp</button>
+      <div class="result-and-button">
+        <div id="rightAnswer" class="alert alert-success animated bounceIn duration-05s">
+          <div>Yeahhh! Chính xác</div>
+        </div>
+        <div id="wrongAnswer" class="alert alert-danger animated bounce">
+          <div>Trả lời không đúng</div>
+        </div>
+        <div id="needAnswer" class="alert alert-warning animated zoomIn duration-05s">
+          Chưa trả lời mà <i class="far fa-2x fa-meh"></i>
+        </div>
+        <div id="submitAnswer">
+          <button type="button" id="btnSubmitAnswer" class="btn btn-success btn-center" onclick="submitAnswer()">Kiểm tra</button>
+          <button type="button" id="btnNextQuestion" class="btn btn-primary btn-center" onclick="nextQuestion()">Kế tiếp</button>
+        </div>
       </div>
     </div>
+    
     <div id="result">
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Chúc mừng!</h4>
