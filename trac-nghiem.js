@@ -15,10 +15,10 @@ let cauHoi = [{
     },
     {
         'title': 'if (i <> 5)',
-        'isRight': true,
+        'isRight': false,
     },
     ],
-    'isMultiAnswer': true,
+    'isMultiAnswer': false,
 },
 {
     'id': 2,
