@@ -81,7 +81,27 @@
     var encoded = Object.keys(data).map(function(k) {
         return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
     }).join('&');
-    xhr.send(encoded);
+    //xhr.send(encoded);
+    console.log(data);
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: JSON.stringify(data),
+      success: function(){
+        form.reset();
+        var formElements = form.querySelector(".form-elements")
+        if (formElements) {
+          formElements.style.display = "none"; // hide form
+        }
+        var thankYouMessage = form.querySelector(".thankyou_message");
+        if (thankYouMessage) {
+          thankYouMessage.style.display = "block";
+        }
+      },
+      error: function(result){
+        console.log(result);
+      }
+    });
   }
   
   function loaded() {
