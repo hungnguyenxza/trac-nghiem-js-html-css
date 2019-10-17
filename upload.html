@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Upload question</title>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Style The Contact Form How Ever You Prefer -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link active" href="upload.html">Upload</a>
+    </nav>
+
+    <!-- START HERE -->
+
+    <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net"
+      action="https://script.google.com/macros/s/AKfycbylZ3aOTADBpD_pEwGYlFrBhLm9Kw-taWqCODlt2KH3Rna5-0NR/exec">
+      <!-- change the form action to your script url -->
+      <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" name="selectBox" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+
+        <button class="button-success pure-button button-xlarge">
+          <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+      </div>
+
+      <!-- Customise the Thankyou Message People See when they submit the form: -->
+      <div class="thankyou_message" style="display:none;">
+        <h2><em>Thanks</em> for contacting us!
+          We will get back to you soon!</h2>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Submit the Form to Google Using "AJAX" -->
+  <script data-cfasync="false" src="form-submission-handler.js"></script>
+  <!-- END -->
+
+</body>
+
+</html>
