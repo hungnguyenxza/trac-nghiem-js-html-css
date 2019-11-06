@@ -36,7 +36,7 @@ let cauHoi = [{
         'isRight': true,
     },
     {
-        'title': 'Chuyển một chuỗi thành số thực',
+        'title': 'Chuyển một số thực thành chuỗi',
         'isRight': false,
     },
     ],
